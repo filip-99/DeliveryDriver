@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Package
   - Customer
+  - Setback
+  - SpeedUp
   layers:
   - Default
   - TransparentFX

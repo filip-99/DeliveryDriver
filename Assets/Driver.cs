@@ -5,7 +5,9 @@ using UnityEngine;
 public class Driver : MonoBehaviour
 {
     [SerializeField] float steerSpeed = 0.1f;
-    [SerializeField] float moveSpeed = 0.01f;
+    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float slovSpeed = 15f;
+    [SerializeField] float boostSpeed = 30f;
 
     void Start()
     {
@@ -23,4 +25,21 @@ public class Driver : MonoBehaviour
             transform.Rotate(0, 0, -steerAmount);
         transform.Translate(0, moveAmount, 0);
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Setback")
+        {
+            moveSpeed = slovSpeed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "SpeedUp")
+        {
+            moveSpeed = boostSpeed;
+        }
+    }
+
 }
